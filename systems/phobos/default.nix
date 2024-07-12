@@ -3,7 +3,10 @@
     mixins-terminfo
     mixins-systemd-boot
     ./grafana.nix
+    ./prometheus.nix
   ];
+
+  sysc.nginx.enable = true;
 
   networking = {
     hostId = "3d845e1f";

@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   inputs,
   ...
@@ -17,7 +16,7 @@
     enable = true;
 
     settings = {
-      server.http_addr = "0.0.0.0";
+      server.root_url = "https://monitoring.bddvlpr.com/grafana";
 
       security = {
         admin_email = "$__file{${config.sops.secrets."grafana/email".path}}";
@@ -55,5 +54,12 @@
           hosts;
       };
     };
+  };
+
+  services.nginx.virtualHosts."monitoring.bddvlpr.com" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".return = "302 /grafana";
+    locations."/grafana/".proxyPass = "http://127.0.0.1:3000/";
   };
 }
