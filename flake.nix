@@ -14,6 +14,9 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
     deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {flake-parts, ...} @ inputs:
@@ -43,7 +46,7 @@
           inherit (inputs'.deploy-rs.packages) deploy-rs;
         in
           pkgs.mkShell {
-            buildInputs = [deploy-rs];
+            buildInputs = with pkgs; [sops deploy-rs];
           };
       };
     };

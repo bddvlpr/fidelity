@@ -1,0 +1,10 @@
+keys:
+  - &host_phobos age1vzmmz562jplguy8ce92jcr8x3zg494g5je0hx6nu4xp79022f5xqudlzh0
+  - &bddvlpr age1wp7nshw57whrddeyekpm3wat8cz7qwrdf3ws4t6wdk6qf27zag6sw2mt9a
+
+creation_rules:
+  - path_regex: systems/phobos/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *host_phobos
+          - *bddvlpr
