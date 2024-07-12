@@ -17,6 +17,9 @@
 
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    grafana-node-dashboard.url = "github:rfmoz/grafana-dashboards";
+    grafana-node-dashboard.flake = false;
   };
 
   outputs = {flake-parts, ...} @ inputs:

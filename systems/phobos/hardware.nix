@@ -4,8 +4,6 @@
     ++ (with inputs.srvos.nixosModules; [
       server
       hardware-hetzner-cloud-arm
-      mixins-terminfo
-      mixins-systemd-boot
     ]);
 
   disko.devices = {
@@ -16,7 +14,8 @@
         content = {
           type = "gpt";
           partitions = {
-            ESP = {
+            esp = {
+              name = "ESP";
               size = "256M";
               type = "EF00";
               content = {

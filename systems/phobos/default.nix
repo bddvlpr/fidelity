@@ -1,4 +1,10 @@
-{
+{inputs, ...}: {
+  imports = with inputs.srvos.nixosModules; [
+    mixins-terminfo
+    mixins-systemd-boot
+    ./grafana.nix
+  ];
+
   networking = {
     hostId = "3d845e1f";
 

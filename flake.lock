@@ -76,6 +76,22 @@
         "type": "github"
       }
     },
+    "grafana-node-dashboard": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716393782,
+        "narHash": "sha256-9BYujV2xXRRDvNI4sjimZEB4Z2TY/0WhwJRh5P122rs=",
+        "owner": "rfmoz",
+        "repo": "grafana-dashboards",
+        "rev": "cad8539cc4c4ed043935e69b9c1ec23e551806f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rfmoz",
+        "repo": "grafana-dashboards",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1720542800,
@@ -125,6 +141,7 @@
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "grafana-node-dashboard": "grafana-node-dashboard",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
         "srvos": "srvos"
