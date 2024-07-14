@@ -1,12 +1,12 @@
-{
-  inputs,
-  config,
-  ...
-}: {
-  imports = [inputs.srvos.nixosModules.roles-prometheus];
-
+{config, ...}: {
   services.prometheus = {
     enable = true;
+
+    retentionTime = "31d";
+
+    ruleFiles = [
+      ./rules/node-exporter.yml
+    ];
 
     scrapeConfigs = let
       inherit (config.services.prometheus.exporters) node;

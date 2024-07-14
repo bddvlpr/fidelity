@@ -60,6 +60,8 @@
     enableACME = true;
     forceSSL = true;
     locations."/".return = "302 /grafana";
-    locations."/grafana/".proxyPass = "http://127.0.0.1:3000/";
+    locations."/grafana/".proxyPass = let
+      inherit (config.services.grafana.settings.server) http_port;
+    in "http://127.0.0.1:${toString http_port}/";
   };
 }
