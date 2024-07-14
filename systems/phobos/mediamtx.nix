@@ -1,4 +1,8 @@
 {
+  lib,
+  pkgs,
+  ...
+}: {
   services.mediamtx = {
     enable = true;
     settings = {
@@ -17,6 +21,8 @@
 
       hlsAlwaysRemux = true;
       hlsVariant = "mpegts";
+      hlsSegmentDuration = "500ms";
+      hlsSegmentCount = 14;
 
       paths = {
         all_others = {
