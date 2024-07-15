@@ -1,12 +1,23 @@
 {config, ...}: {
   sops.secrets."alertmanager/auth" = {owner = "nginx";};
+  sops.secrets."alertmanager/env" = {};
 
   services.prometheus.alertmanager = {
     enable = true;
     webExternalUrl = "https://monitoring.bddvlpr.com/alertmanager/";
     extraFlags = ["--cluster.listen-address=''" "--web.route-prefix=/"];
 
+    environmentFile = config.sops.secrets."alertmanager/env".path;
+
     configuration = {
+      global = {
+        smtp_smarthost = "smtp.mailbox.org:587";
+        smtp_from = "$SMTP_FROM";
+        smtp_require_tls = true;
+        smtp_auth_username = "$SMTP_USERNAME";
+        smtp_auth_password = "$SMTP_PASSWORD";
+      };
+
       route = {
         receiver = "cloud.bddvlpr.com";
         group_wait = "30s";
@@ -18,6 +29,9 @@
       receivers = [
         {
           name = "cloud.bddvlpr.com";
+          email_configs = [
+            {to = "luna@bddvlpr.com";}
+          ];
         }
       ];
     };
