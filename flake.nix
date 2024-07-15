@@ -33,6 +33,7 @@
 
       imports = [
         ./checks/module.nix
+        ./deployments/module.nix
         ./lib/module.nix
         ./modules/module.nix
         ./systems/module.nix

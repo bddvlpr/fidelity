@@ -15,7 +15,9 @@
         job_name = "node";
         static_configs = [
           {
-            targets = ["phobos.cloud.bddvlpr.com:${toString node.port}"];
+            targets = map (host: "${host}:${toString node.port}") [
+              "phobos.cloud.bddvlpr.com"
+            ];
           }
         ];
       }
