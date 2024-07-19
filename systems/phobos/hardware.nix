@@ -1,10 +1,17 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  ...
+}: {
   imports =
     [inputs.disko.nixosModules.disko]
     ++ (with inputs.srvos.nixosModules; [
       server
       hardware-hetzner-cloud-arm
     ]);
+
+  # TODO: Tries growpart on zroot/root
+  boot.growPartition = lib.mkForce false;
 
   disko.devices = {
     disk = {
