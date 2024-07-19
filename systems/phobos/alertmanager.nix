@@ -8,6 +8,7 @@
     extraFlags = ["--cluster.listen-address=''" "--web.route-prefix=/"];
 
     environmentFile = config.sops.secrets."alertmanager/env".path;
+    checkConfig = false;
 
     configuration = {
       global = {
@@ -31,6 +32,9 @@
           name = "cloud.bddvlpr.com";
           email_configs = [
             {to = "luna@bddvlpr.com";}
+          ];
+          discord_configs = [
+            {webhook_url = "$DISCORD_WEBHOOK";}
           ];
         }
       ];

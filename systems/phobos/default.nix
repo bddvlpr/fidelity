@@ -1,7 +1,6 @@
 {inputs, ...}: {
   imports = with inputs.srvos.nixosModules; [
     mixins-terminfo
-    mixins-systemd-boot
     ./alertmanager.nix
     ./grafana.nix
     ./mediamtx.nix
