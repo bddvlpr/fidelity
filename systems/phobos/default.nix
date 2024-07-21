@@ -10,6 +10,7 @@
   sysc.nginx.enable = true;
 
   networking = {
+    hostName = "phobos";
     hostId = "3d845e1f";
 
     interfaces.enp7s0 = {

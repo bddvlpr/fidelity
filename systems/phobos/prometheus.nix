@@ -16,6 +16,7 @@
         static_configs = [
           {
             targets = map (host: "${host}:${toString node.port}") [
+              "ceres.cloud.bddvlpr.com"
               "phobos.cloud.bddvlpr.com"
             ];
           }

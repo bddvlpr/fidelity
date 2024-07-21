@@ -22,6 +22,10 @@
 in {
   flake.nixosConfigurations = builtins.listToAttrs [
     (mkNode {
+      host = "ceres";
+      system = "x86_64-linux";
+    })
+    (mkNode {
       host = "phobos";
       system = "aarch64-linux";
     })
