@@ -1,8 +1,11 @@
 {inputs, ...}: {
-  imports = with inputs.hardware.nixosModules;
+  imports =
     [
-      common-cpu-amd
+      #./home-assistant.nix
     ]
+    ++ (with inputs.hardware.nixosModules; [
+      common-cpu-amd
+    ])
     ++ (with inputs.srvos.nixosModules; [
       mixins-terminfo
     ]);
@@ -12,6 +15,8 @@
   networking = {
     hostName = "ceres";
     hostId = "3d845e20";
+
+    nameservers = ["1.1.1.1" "1.0.0.1"];
   };
 
   systemd.network = {
