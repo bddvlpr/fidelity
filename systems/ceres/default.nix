@@ -22,7 +22,7 @@
   systemd.network = {
     enable = true;
 
-    networks."10-wan" = {
+    networks."20-eno1" = {
       matchConfig.Name = "eno1";
 
       address = ["192.168.14.23/24"];
