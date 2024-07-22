@@ -6,6 +6,7 @@
 
     ruleFiles = [
       ./rules/node-exporter.yml
+      ./rules/prometheus-exporter.yml
     ];
 
     scrapeConfigs = let
