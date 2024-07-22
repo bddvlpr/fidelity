@@ -1,7 +1,7 @@
 {inputs, ...}: {
   imports =
     [
-      #./home-assistant.nix
+      ./home-assistant.nix
     ]
     ++ (with inputs.hardware.nixosModules; [
       common-cpu-amd

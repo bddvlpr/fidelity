@@ -22,6 +22,9 @@
 
     grafana-node-dashboard.url = "github:rfmoz/grafana-dashboards";
     grafana-node-dashboard.flake = false;
+
+    hass-pyloxone.url = "github:jodehli/pyloxone";
+    hass-pyloxone.flake = false;
   };
 
   outputs = {flake-parts, ...} @ inputs:
