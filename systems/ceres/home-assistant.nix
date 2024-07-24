@@ -11,6 +11,7 @@
       "met"
       "esphome"
       "dsmr"
+      "foscam"
     ];
 
     extraPackages = ps:
