@@ -1,8 +1,4 @@
 {
-  lib,
-  pkgs,
-  ...
-}: {
   services.mediamtx = {
     enable = true;
     settings = {
