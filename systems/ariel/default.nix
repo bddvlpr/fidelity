@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  # pkgs,
   ...
 }: {
   imports = let
@@ -13,7 +14,11 @@
       mixins-terminfo
     ]);
 
+  sdImage.compressImage = false;
+
   boot = {
+    consoleLogLevel = 8;
+    # kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi4;
     initrd.systemd.enable = false;
     loader.systemd-boot.enable = lib.mkForce false;
   };
@@ -28,8 +33,8 @@
   systemd.network = {
     enable = true;
 
-    networks."20-eno1" = {
-      matchConfig.Name = "eno1";
+    networks."20-end0" = {
+      matchConfig.Name = "end0";
 
       address = ["192.168.14.25/24"];
       routes = [
