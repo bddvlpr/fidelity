@@ -26,6 +26,9 @@
     grafana-node-dashboard.url = "github:rfmoz/grafana-dashboards";
     grafana-node-dashboard.flake = false;
 
+    grafana-blackbox-dashboard.url = "github:aaabramov/grafana-dashboards";
+    grafana-blackbox-dashboard.flake = false;
+
     hass-pyloxone.url = "github:jodehli/pyloxone";
     hass-pyloxone.flake = false;
   };

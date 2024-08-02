@@ -76,6 +76,22 @@
         "type": "github"
       }
     },
+    "grafana-blackbox-dashboard": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1637970027,
+        "narHash": "sha256-5rTtrP16TE95B/WIUP29TpFa7kXc82miDfma29A3hIQ=",
+        "owner": "aaabramov",
+        "repo": "grafana-dashboards",
+        "rev": "ef21baff081b559662f2e284df617be3154af0c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaabramov",
+        "repo": "grafana-dashboards",
+        "type": "github"
+      }
+    },
     "grafana-node-dashboard": {
       "flake": false,
       "locked": {
@@ -238,6 +254,7 @@
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "grafana-blackbox-dashboard": "grafana-blackbox-dashboard",
         "grafana-node-dashboard": "grafana-node-dashboard",
         "hardware": "hardware",
         "hass-pyloxone": "hass-pyloxone",

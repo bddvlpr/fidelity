@@ -37,6 +37,13 @@
               src = inputs.grafana-node-dashboard;
             in "${src}/prometheus/node-exporter-full.json";
           }
+          {
+            name = "Blackbox Nodes";
+            type = "file";
+            options.path = let
+              src = inputs.grafana-blackbox-dashboard;
+            in "${src}/blackbox-exporter/blackbox-exporter.json";
+          }
         ];
       };
 
