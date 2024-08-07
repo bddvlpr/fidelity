@@ -1,13 +1,13 @@
 {
-  src,
+  input,
   buildHomeAssistantComponent,
 }:
 buildHomeAssistantComponent {
   owner = "jodehli";
   domain = "pyloxone";
-  version = "0.6.10";
+  version = input.rev;
 
-  inherit src;
+  src = input;
 
   dontConfigure = true;
   dontBuild = true;

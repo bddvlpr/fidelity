@@ -12,6 +12,7 @@
       "esphome"
       "dsmr"
       "foscam"
+      "tuya"
     ];
 
     extraPackages = ps:
@@ -22,7 +23,7 @@
 
     customComponents = [
       (pkgs.callPackage ./components/pyloxone.nix {
-        src = inputs.hass-pyloxone;
+        input = inputs.hass-pyloxone;
       })
     ];
 
