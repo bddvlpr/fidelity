@@ -1,6 +1,7 @@
 keys:
   - &host_ceres age1zshn4e8mefvuyhrtmmxyjk7lg46hssxag58sees8utznnf8zzs5q2vkjtr
   - &host_phobos age1vzmmz562jplguy8ce92jcr8x3zg494g5je0hx6nu4xp79022f5xqudlzh0
+  - &host_deimos age14rfhpu5ek62gr7hlvlufnmujvrpj0yr4zsy2grsjldkp7ct56ggsy68aju
   - &bddvlpr age1wp7nshw57whrddeyekpm3wat8cz7qwrdf3ws4t6wdk6qf27zag6sw2mt9a
 
 creation_rules:
@@ -8,6 +9,11 @@ creation_rules:
     key_groups:
       - age:
           - *host_ceres
+          - *bddvlpr
+  - path_regex: systems/deimos/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *host_deimos
           - *bddvlpr
   - path_regex: systems/phobos/[^/]+\.yaml$
     key_groups:

@@ -28,6 +28,9 @@
 
     hass-pyloxone.url = "github:jodehli/pyloxone";
     hass-pyloxone.flake = false;
+
+    nix-minecraft.url = "github:infinidoge/nix-minecraft";
+    nix-minecraft.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {flake-parts, ...} @ inputs:

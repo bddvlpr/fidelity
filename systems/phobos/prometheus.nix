@@ -18,7 +18,18 @@
           {
             targets = map (host: "${host}:${toString node.port}") [
               "ceres.cloud.bddvlpr.com"
+              "deimos.cloud.bddvlpr.com"
               "phobos.cloud.bddvlpr.com"
+            ];
+          }
+        ];
+      }
+      {
+        job_name = "fabric";
+        static_configs = [
+          {
+            targets = map (host: "${host}:25585") [
+              "deimos.cloud.bddvlpr.com"
             ];
           }
         ];
