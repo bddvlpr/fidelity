@@ -17,8 +17,8 @@ in {
 
   services.minecraft-servers.servers.modpack = let
     modpack = mcPkgs.fetchPackwizModpack {
-      url = "https://raw.githubusercontent.com/bddvlpr/modpack/4f3072a16a507b77b7c2a736ab11bd3c51d68f64/pack.toml";
-      packHash = "sha256-b9s/kTmqahUzCIsSLtRGv2I3oYk1EIrYwm9Otr5a/qw=";
+      url = "https://raw.githubusercontent.com/bddvlpr/modpack/84e717778bc91c0e4ed38f67d6c0751f30447dfc/pack.toml";
+      packHash = "sha256-RHhG08CEDWbS8FUPbugKlQvMWI7rn1mmdy1mJnuF4H8=";
     };
     mcVersion = modpack.manifest.versions.minecraft;
     fabricVersion = modpack.manifest.versions.fabric;
@@ -35,6 +35,7 @@ in {
       bddvlpr = "d10d86d1-33ec-405f-b165-d2483dd0d39a";
       Xono312 = "741026cf-954e-43fc-85d4-5521212e06ee";
       Flugstein = "778a6081-f4e7-4ff3-b906-ab8123a10344";
+      TriggeredKat = "e2d8edf0-69b0-4c49-8315-2907f571d157";
     };
 
     serverProperties = {
