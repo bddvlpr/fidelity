@@ -17,8 +17,8 @@ in {
 
   services.minecraft-servers.servers.modpack = let
     modpack = mcPkgs.fetchPackwizModpack {
-      url = "https://raw.githubusercontent.com/bddvlpr/modpack/84e717778bc91c0e4ed38f67d6c0751f30447dfc/pack.toml";
-      packHash = "sha256-RHhG08CEDWbS8FUPbugKlQvMWI7rn1mmdy1mJnuF4H8=";
+      url = "https://raw.githubusercontent.com/bddvlpr/modpack/49f06f56adff1c66bc53d6a90b94c355e9e9a503/pack.toml";
+      packHash = "sha256-ULdVNvba4u/f5FzfUw3pRKtkpWC2fSXFnRA9wT3Ih3Q=";
     };
     mcVersion = modpack.manifest.versions.minecraft;
     fabricVersion = modpack.manifest.versions.fabric;
@@ -40,7 +40,7 @@ in {
 
     serverProperties = {
       white-list = true;
-      motd = "bruh moment";
+      motd = "vrcsmp";
       max-players = 16;
       spawn-protection = 0;
       difficulty = 3;
