@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  lib,
+  outputs,
+  config,
+  ...
+}: {
   services.prometheus = {
     enable = true;
 
@@ -9,31 +14,33 @@
       ./rules/prometheus-exporter.yml
     ];
 
-    scrapeConfigs = let
-      inherit (config.services.prometheus.exporters) node;
-    in [
-      {
-        job_name = "node";
-        static_configs = [
-          {
-            targets = map (host: "${host}:${toString node.port}") [
-              "ceres.cloud.bddvlpr.com"
-              "deimos.cloud.bddvlpr.com"
-              "phobos.cloud.bddvlpr.com"
-            ];
-          }
-        ];
-      }
-      {
-        job_name = "fabric";
-        static_configs = [
-          {
-            targets = map (host: "${host}:25585") [
-              "deimos.cloud.bddvlpr.com"
-            ];
-          }
-        ];
-      }
-    ];
+    scrapeConfigs =
+      (let
+        ignoredExporters = ["minio" "unifi-poller"];
+        exporters = config.services.prometheus.exporters;
+      in
+        builtins.filter (v: let static_configs = builtins.head v.static_configs; in static_configs.targets != []) (lib.mapAttrsToList (
+            name: value: {
+              job_name = name;
+              static_configs = let
+                hosts = lib.filterAttrs (host: nixosConfig: nixosConfig.config.services.prometheus.exporters.${name}.enable or false) outputs.nixosConfigurations;
+              in [
+                {
+                  targets = lib.mapAttrsToList (host: nixosConfig: "${host}.cloud.bddvlpr.com:${toString value.port}") hosts;
+                }
+              ];
+            }
+          )
+          (lib.filterAttrs (name: value: !(builtins.elem name ignoredExporters)) exporters)))
+      ++ [
+        {
+          job_name = "fabric";
+          static_configs = [
+            {
+              targets = ["deimos.cloud.bddvlpr.com:25585"];
+            }
+          ];
+        }
+      ];
   };
 }
