@@ -11,6 +11,11 @@ in {
       type = types.bool;
       default = false;
     };
+
+    enableExporter = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -42,6 +47,8 @@ in {
         access_log syslog:server=unix:/dev/log;
       '';
     };
+
+    services.prometheus.exporters.nginx.enable = lib.mkIf cfg.enableExporter true;
 
     security.acme = {
       acceptTerms = true;
