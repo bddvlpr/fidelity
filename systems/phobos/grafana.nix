@@ -34,16 +34,12 @@
           {
             name = "Node Exporter";
             type = "file";
-            options.path = let
-              src = inputs.grafana-dashboards;
-            in "${src}/node/node-exporter.json";
+            options.path = ./dashboards/node-exporter.json;
           }
           {
             name = "NGINX Exporter";
             type = "file";
-            options.path = let
-              src = inputs.grafana-dashboards;
-            in "${src}/nginx/nginx-exporter.json";
+            options.path = ./dashboards/nginx-exporter.json;
           }
         ];
       };

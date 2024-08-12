@@ -23,9 +23,6 @@
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    grafana-dashboards.url = "github:bddvlpr/dashboards";
-    grafana-dashboards.flake = false;
-
     hass-pyloxone.url = "github:jodehli/pyloxone";
     hass-pyloxone.flake = false;
 
