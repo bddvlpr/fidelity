@@ -46,6 +46,16 @@ in {
         real_ip_header CF-Connecting-IP;
         access_log syslog:server=unix:/dev/log;
       '';
+
+      virtualHosts."localhost" = lib.mkIf cfg.enableExporter {
+        locations."/nginx_status".extraConfig = ''
+          stub_status on;
+          access_log off;
+          allow 127.0.0.1;
+          allow ::1;
+          deny all;
+        '';
+      };
     };
 
     services.prometheus.exporters.nginx.enable = lib.mkIf cfg.enableExporter true;
