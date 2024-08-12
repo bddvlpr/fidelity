@@ -32,11 +32,18 @@
       dashboards.settings = {
         providers = [
           {
-            name = "Prometheus Nodes";
+            name = "Node Exporter";
             type = "file";
             options.path = let
-              src = inputs.grafana-node-dashboard;
-            in "${src}/prometheus/node-exporter-full.json";
+              src = inputs.grafana-dashboards;
+            in "${src}/node/node-exporter.json";
+          }
+          {
+            name = "NGINX Exporter";
+            type = "file";
+            options.path = let
+              src = inputs.grafana-dashboards;
+            in "${src}/nginx/nginx-exporter.json";
           }
         ];
       };

@@ -110,19 +110,19 @@
         "type": "github"
       }
     },
-    "grafana-node-dashboard": {
+    "grafana-dashboards": {
       "flake": false,
       "locked": {
-        "lastModified": 1716393782,
-        "narHash": "sha256-9BYujV2xXRRDvNI4sjimZEB4Z2TY/0WhwJRh5P122rs=",
-        "owner": "rfmoz",
-        "repo": "grafana-dashboards",
-        "rev": "cad8539cc4c4ed043935e69b9c1ec23e551806f4",
+        "lastModified": 1723463370,
+        "narHash": "sha256-eqCF060heG/q2ftMPgV6Tl4zkRFdBKS/paqJmVlYRqE=",
+        "owner": "bddvlpr",
+        "repo": "dashboards",
+        "rev": "f6960ca1538673d262bed3c28d025ba46abd4585",
         "type": "github"
       },
       "original": {
-        "owner": "rfmoz",
-        "repo": "grafana-dashboards",
+        "owner": "bddvlpr",
+        "repo": "dashboards",
         "type": "github"
       }
     },
@@ -294,7 +294,7 @@
         "deploy-rs": "deploy-rs",
         "disko": "disko",
         "flake-parts": "flake-parts",
-        "grafana-node-dashboard": "grafana-node-dashboard",
+        "grafana-dashboards": "grafana-dashboards",
         "hardware": "hardware",
         "hass-pyloxone": "hass-pyloxone",
         "nix-minecraft": "nix-minecraft",
