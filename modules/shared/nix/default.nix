@@ -23,5 +23,12 @@ in {
       trusted-users = ["bddvlpr"];
       experimental-features = ["nix-command" "flakes"];
     };
+
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      randomizedDelaySec = "30min";
+      options = "--delete-older-than 14d";
+    };
   };
 }
