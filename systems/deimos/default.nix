@@ -2,10 +2,13 @@
   imports =
     [
       ./minecraft.nix
+      ./synapse.nix
     ]
     ++ (with inputs.srvos.nixosModules; [
       mixins-terminfo
     ]);
+
+  sysc.nginx.enable = true;
 
   networking = {
     hostName = "deimos";

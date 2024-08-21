@@ -41,6 +41,15 @@
             }
           ];
         }
+        {
+          job_name = "synapse";
+          metrics_path = "/_synapse/metrics";
+          static_configs = [
+            {
+              targets = ["deimos.cloud.bddvlpr.com:8008"];
+            }
+          ];
+        }
       ];
   };
 }

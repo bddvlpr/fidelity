@@ -41,6 +41,11 @@
             type = "file";
             options.path = ./dashboards/nginx-exporter.json;
           }
+          {
+            name = "Synapse Exporter";
+            type = "file";
+            options.path = ./dashboards/synapse-exporter.json;
+          }
         ];
       };
 
