@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   services.home-assistant = {
@@ -13,6 +14,7 @@
       "dsmr"
       "foscam"
       "tuya"
+      "isal"
     ];
 
     extraPackages = ps:
@@ -43,6 +45,60 @@
         temperature_unit = "C";
         unit_system = "metric";
       };
+
+      automation = lib.flatten (builtins.map (act: [
+          {
+            alias = "Geolocation/${act.user} enters home";
+            trigger = [
+              {
+                platform = "zone";
+                entity_id = act.user;
+                zone = "zone.home";
+                event = "enter";
+              }
+            ];
+            action = [
+              {
+                action = "switch.turn_on";
+                target.entity_id = act.target;
+              }
+            ];
+          }
+          {
+            alias = "Geolocation/${act.user} leaves home";
+            trigger = [
+              {
+                platform = "zone";
+                entity_id = act.user;
+                zone = "zone.home";
+                event = "leave";
+              }
+            ];
+            action = [
+              {
+                action = "switch.turn_off";
+                target.entity_id = act.target;
+              }
+            ];
+          }
+        ]) [
+          {
+            user = "person.bddvlpr";
+            target = "switch.stijnifttt";
+          }
+          {
+            user = "person.sven";
+            target = "switch.svenifttt";
+          }
+          {
+            user = "person.cin";
+            target = "switch.cinifttt";
+          }
+          {
+            user = "person.anke";
+            target = "switch.ankeifttt";
+          }
+        ]);
     };
   };
 
