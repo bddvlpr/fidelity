@@ -25,6 +25,8 @@ in {
     serverVersion = lib.replaceStrings ["."] ["_"] "fabric-${mcVersion}";
   in {
     enable = true;
+    enableReload = true;
+
     package = mcPkgs.fabricServers.${serverVersion}.override {loaderVersion = fabricVersion;};
     openFirewall = true;
     symlinks = {
