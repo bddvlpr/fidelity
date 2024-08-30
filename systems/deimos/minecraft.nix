@@ -17,8 +17,8 @@ in {
 
   services.minecraft-servers.servers.modpack = let
     modpack = mcPkgs.fetchPackwizModpack {
-      url = "https://raw.githubusercontent.com/bddvlpr/modpack/49f06f56adff1c66bc53d6a90b94c355e9e9a503/pack.toml";
-      packHash = "sha256-ULdVNvba4u/f5FzfUw3pRKtkpWC2fSXFnRA9wT3Ih3Q=";
+      url = "https://raw.githubusercontent.com/bddvlpr/modpack/5a27546bcbeb8b38e475cab3309bfffccdc90cd1/pack.toml";
+      packHash = "sha256-0QNEIOqH+C08NpTirddfuZ1y6+JpjTehGfjFsHlAqlw=";
     };
     mcVersion = modpack.manifest.versions.minecraft;
     fabricVersion = modpack.manifest.versions.fabric;
