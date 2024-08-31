@@ -15,6 +15,7 @@
       "foscam"
       "tuya"
       "isal"
+      "homekit"
     ];
 
     extraPackages = ps:
@@ -100,6 +101,11 @@
           }
         ]);
     };
+  };
+
+  networking.firewall = {
+    allowedTCPPorts = [21064];
+    allowedUDPPorts = [5353];
   };
 
   services.nginx.virtualHosts."assistant.bddvlpr.com" = {
