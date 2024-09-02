@@ -1,24 +1,13 @@
 {
   inputs,
   lib,
-  # pkgs,
+  pkgs,
   ...
 }: {
-  imports = let
-    inherit (inputs.rpi-nix.nixosModules) raspberry-pi;
-  in
-    [
-      raspberry-pi
-    ]
-    ++ (with inputs.srvos.nixosModules; [
-      mixins-terminfo
-    ]);
-
-  sdImage.compressImage = false;
-
   boot = {
+    tmp.useTmpfs = true;
     consoleLogLevel = 8;
-    # kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi4;
+    kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi3;
     initrd.systemd.enable = false;
     loader.systemd-boot.enable = lib.mkForce false;
   };
@@ -33,8 +22,8 @@
   systemd.network = {
     enable = true;
 
-    networks."20-end0" = {
-      matchConfig.Name = "end0";
+    networks."20-enu1u1" = {
+      matchConfig.Name = "enu1u1";
 
       address = ["192.168.14.25/24"];
       routes = [

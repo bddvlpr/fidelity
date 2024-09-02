@@ -1,17 +1,15 @@
 {inputs, ...}: {
-  imports = with inputs.srvos.nixosModules; [
-    server
-  ];
+  imports = with inputs.srvos.nixosModules;
+    [
+      server
+    ]
+    ++ [inputs.hardware.nixosModules.raspberry-pi-3];
 
-  raspberry-pi-nix.board = "bcm2711";
-
-  hardware = {
-    bluetooth.enable = true;
-    raspberry-pi.config.all.base-dt-params = {
-      krnbt = {
-        enable = true;
-        value = "on";
-      };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+      options = ["noatime"];
     };
   };
 }
