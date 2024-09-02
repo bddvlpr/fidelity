@@ -15,8 +15,6 @@
     hostName = "pallas";
     hostId = "3d845e23";
 
-    wireless.enable = true;
-
     nameservers = ["1.1.1.1" "1.0.0.1"];
   };
 
