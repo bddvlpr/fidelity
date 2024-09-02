@@ -9,8 +9,6 @@
 
     hardware.url = "github:nixos/nixos-hardware";
 
-    rpi-nix.url = "github:nix-community/raspberry-pi-nix";
-
     srvos.url = "github:nix-community/srvos";
     srvos.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -2,6 +2,7 @@ keys:
   - &host_ariel age15jut7t3mn332hvj0zpss2nahc53rcrw6g82n5zc6taasrq24f3cs0jpfww
   - &host_ceres age1zshn4e8mefvuyhrtmmxyjk7lg46hssxag58sees8utznnf8zzs5q2vkjtr
   - &host_deimos age14rfhpu5ek62gr7hlvlufnmujvrpj0yr4zsy2grsjldkp7ct56ggsy68aju
+  - &host_pallas age16uzuf0q70pcgs7vh9egzfve6g0qz33q8suhhzvz203hyfawz24csy2y6ly
   - &host_phobos age1vzmmz562jplguy8ce92jcr8x3zg494g5je0hx6nu4xp79022f5xqudlzh0
   - &bddvlpr age1wp7nshw57whrddeyekpm3wat8cz7qwrdf3ws4t6wdk6qf27zag6sw2mt9a
 
@@ -20,6 +21,11 @@ creation_rules:
     key_groups:
       - age:
           - *host_deimos
+          - *bddvlpr
+  - path_regex: systems/pallas/[^/]+\.yaml$
+    key_groups:
+      - age:
+          - *host_pallas
           - *bddvlpr
   - path_regex: systems/phobos/[^/]+\.yaml$
     key_groups:
