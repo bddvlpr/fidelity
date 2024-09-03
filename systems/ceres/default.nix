@@ -1,14 +1,8 @@
 {inputs, ...}: {
-  imports =
-    [
-      ./home-assistant.nix
-    ]
-    ++ (with inputs.hardware.nixosModules; [
-      common-cpu-amd
-    ])
-    ++ (with inputs.srvos.nixosModules; [
-      mixins-terminfo
-    ]);
+  imports = [
+    inputs.srvos.nixosModules.mixins-terminfo
+    ./home-assistant.nix
+  ];
 
   sysc.nginx.enable = true;
 

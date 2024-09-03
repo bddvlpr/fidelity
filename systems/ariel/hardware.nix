@@ -1,9 +1,8 @@
 {inputs, ...}: {
-  imports = with inputs.srvos.nixosModules;
-    [
-      server
-    ]
-    ++ [inputs.hardware.nixosModules.raspberry-pi-3];
+  imports = [
+    inputs.srvos.nixosModules.server
+    inputs.hardware.nixosModules.raspberry-pi-3
+  ];
 
   fileSystems = {
     "/" = {

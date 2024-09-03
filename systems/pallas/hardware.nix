@@ -1,9 +1,12 @@
 {inputs, ...}: {
-  imports = with inputs.srvos.nixosModules;
-    [
-      server
-    ]
-    ++ [inputs.hardware.nixosModules.raspberry-pi-4];
+  imports = [
+    inputs.srvos.nixosModules.server
+    inputs.hardware.nixosModules.raspberry-pi-4
+  ];
+
+  hardware.raspberry-pi."4" = {
+    dwc2.enable = true;
+  };
 
   fileSystems = {
     "/" = {

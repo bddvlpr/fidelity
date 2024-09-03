@@ -3,12 +3,11 @@
   lib,
   ...
 }: {
-  imports =
-    [inputs.disko.nixosModules.disko]
-    ++ (with inputs.srvos.nixosModules; [
-      server
-      hardware-hetzner-cloud-arm
-    ]);
+  imports = [
+    inputs.srvos.nixosModules.server
+    inputs.srvos.nixosModules.hardware-hetzner-cloud-arm
+    inputs.disko.nixosModules.disko
+  ];
 
   # TODO: Tries growpart on zroot/root
   boot.growPartition = lib.mkForce false;

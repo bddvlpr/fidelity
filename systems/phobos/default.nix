@@ -1,6 +1,6 @@
 {inputs, ...}: {
-  imports = with inputs.srvos.nixosModules; [
-    mixins-terminfo
+  imports = [
+    inputs.srvos.nixosModules.mixins-terminfo
     ./alertmanager.nix
     ./grafana.nix
     ./mediamtx.nix

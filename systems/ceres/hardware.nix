@@ -3,11 +3,11 @@
   lib,
   ...
 }: {
-  imports =
-    [inputs.disko.nixosModules.disko]
-    ++ (with inputs.srvos.nixosModules; [
-      server
-    ]);
+  imports = [
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.srvos.nixosModules.server
+    inputs.disko.nixosModules.disko
+  ];
 
   # TODO: Tries growpart on zroot/root
   boot.growPartition = lib.mkForce false;
