@@ -4,6 +4,8 @@
     inputs.hardware.nixosModules.raspberry-pi-3
   ];
 
+  hardware.enableRedistributableFirmware = true;
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";

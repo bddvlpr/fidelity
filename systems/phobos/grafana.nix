@@ -1,8 +1,6 @@
 {
   config,
-  pkgs,
   lib,
-  inputs,
   ...
 }: {
   sops.secrets = let
