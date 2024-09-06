@@ -3,7 +3,7 @@
     inputs.srvos.nixosModules.mixins-terminfo
     ./alertmanager.nix
     ./grafana.nix
-    ./mediamtx.nix
+    # ./mediamtx.nix
     ./prometheus.nix
   ];
 

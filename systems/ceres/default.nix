@@ -2,6 +2,7 @@
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
     ./home-assistant.nix
+    ./radiosonde.nix
   ];
 
   sysc.nginx.enable = true;
