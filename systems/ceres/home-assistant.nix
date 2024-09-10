@@ -16,6 +16,7 @@
       "tuya"
       "isal"
       "homekit"
+      "shelly"
     ];
 
     extraPackages = ps:
