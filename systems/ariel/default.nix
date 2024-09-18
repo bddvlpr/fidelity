@@ -26,10 +26,10 @@
 
     wireless = {
       enable = true;
+      secretsFile = config.sops.secrets."wireless/env".path;
       networks = {
-        Capybara.psk = "@PSK_CAPYBARA@";
+        Capybara.pskRaw = "ext:psk_capybara";
       };
-      environmentFile = config.sops.secrets."wireless/env".path;
     };
 
     nameservers = ["1.1.1.1" "1.0.0.1"];
