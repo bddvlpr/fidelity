@@ -33,14 +33,14 @@
           )
           (lib.filterAttrs (name: value: !(builtins.elem name ignoredExporters)) exporters)))
       ++ [
-        {
-          job_name = "fabric";
-          static_configs = [
-            {
-              targets = ["deimos.cloud.bddvlpr.com:25585"];
-            }
-          ];
-        }
+        # {
+        #   job_name = "fabric";
+        #   static_configs = [
+        #     {
+        #       targets = ["deimos.cloud.bddvlpr.com:25585"];
+        #     }
+        #   ];
+        # }
         {
           job_name = "synapse";
           metrics_path = "/_synapse/metrics";

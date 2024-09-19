@@ -38,6 +38,11 @@
       url = "github:infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    untis-ics-sync = {
+      url = "github:bddvlpr/untis-ics-sync";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {flake-parts, ...} @ inputs:
