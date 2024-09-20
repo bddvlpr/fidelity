@@ -25,8 +25,8 @@
 
       CORS_ORIGIN="https://uis-ap.bddvlpr.com"
 
-      LESSONS_TIMETABLE_BEFORE=7
-      LESSONS_TIMETABLE_AFTER=31
+      LESSONS_TIMETABLE_BEFORE=3
+      LESSONS_TIMETABLE_AFTER=14
     '';
   };
 
