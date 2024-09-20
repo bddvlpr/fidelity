@@ -11,6 +11,8 @@
     ./moonraker.nix
   ];
 
+  sysc.nginx.enable = true;
+
   sops.secrets."wireless/env" = {};
 
   boot = {

@@ -99,7 +99,7 @@
         control_pin = "PB0";
         x_offset = -45.0;
         y_offset = -10.0;
-        #z_offset: 0
+        z_offset = 0;
         speed = 20;
         samples = 1;
         sample_retract_dist = 8.0;

@@ -7,7 +7,7 @@
         port = 80;
       }
     ];
-    nginx.serverAliases = ["mainsail.local"];
+    nginx.serverAliases = ["printer.bddvlpr.com"];
   };
 
   networking.firewall.allowedTCPPorts = [80];
