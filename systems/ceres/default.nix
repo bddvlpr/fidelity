@@ -2,6 +2,7 @@
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
     ./home-assistant.nix
+    ./nextcloud.nix
     ./radiosonde.nix
   ];
 
