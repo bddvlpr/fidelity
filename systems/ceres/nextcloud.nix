@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   sops.secrets = {
     "nextcloud/smtphost" = {};
     "nextcloud/smtpport" = {};
@@ -49,7 +53,7 @@
     };
 
     extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) calendar mail notes;
+      inherit (config.services.nextcloud.package.packages.apps) calendar contacts mail notes;
     };
   };
 
