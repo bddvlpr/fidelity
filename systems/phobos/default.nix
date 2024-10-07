@@ -1,10 +1,9 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    ./alertmanager.nix
-    ./grafana.nix
-    # ./mediamtx.nix
-    ./prometheus.nix
+    ./alertmanager
+    ./grafana
+    ./prometheus
   ];
 
   sysc.nginx.enable = true;

@@ -1,9 +1,9 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    # ./minecraft.nix
-    ./synapse.nix
-    ./untis-ics-sync.nix
+    # ./minecraft
+    ./synapse
+    ./untis-ics-sync
   ];
 
   sysc.nginx.enable = true;

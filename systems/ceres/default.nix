@@ -1,9 +1,9 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    ./home-assistant.nix
-    ./nextcloud.nix
-    ./radiosonde.nix
+    ./home-assistant
+    ./nextcloud
+    ./radiosonde
   ];
 
   sysc.nginx.enable = true;

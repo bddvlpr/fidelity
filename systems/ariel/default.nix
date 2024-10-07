@@ -6,9 +6,9 @@
   ...
 }: {
   imports = [
-    ./klipper.nix
-    ./mainsail.nix
-    ./moonraker.nix
+    ./klipper
+    ./mainsail
+    ./moonraker
   ];
 
   sysc.nginx.enable = true;
