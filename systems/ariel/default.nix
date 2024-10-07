@@ -9,6 +9,7 @@
     ./klipper
     ./mainsail
     ./moonraker
+    # ./spoolman
   ];
 
   sysc.nginx.enable = true;
