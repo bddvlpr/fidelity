@@ -12,8 +12,6 @@
   # TODO: Tries growpart on zroot/root
   boot.growPartition = lib.mkForce false;
 
-  hardware.rtl-sdr.enable = true;
-
   disko.devices = {
     disk = {
       alpha = {

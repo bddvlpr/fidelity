@@ -6,13 +6,8 @@
   ...
 }: {
   imports = [
-    ./klipper
-    ./mainsail
-    ./moonraker
-    # ./spoolman
+    ./radiosonde-auto-rx
   ];
-
-  sysc.nginx.enable = true;
 
   sops.secrets."wireless/env" = {};
 

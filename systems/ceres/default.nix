@@ -3,7 +3,6 @@
     inputs.srvos.nixosModules.mixins-terminfo
     ./home-assistant
     ./nextcloud
-    ./radiosonde
   ];
 
   sysc.nginx.enable = true;

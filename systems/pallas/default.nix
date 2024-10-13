@@ -4,6 +4,14 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./klipper
+    ./mainsail
+    ./moonraker
+  ];
+
+  sysc.nginx.enable = true;
+
   boot = {
     tmp.useTmpfs = true;
     kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi4;
