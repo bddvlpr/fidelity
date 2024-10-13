@@ -1,8 +1,10 @@
 {
   config,
   lib,
+  outputs,
   ...
-}: {
+}:
+with lib; {
   sops.secrets = let
     owner = "grafana";
   in {
@@ -15,7 +17,7 @@
     enable = true;
 
     settings = {
-      server.root_url = "https://monitoring.bddvlpr.com/grafana";
+      server.root_url = "https://monitoring.bddvlpr.com";
 
       security = {
         admin_email = "$__file{${config.sops.secrets."grafana/email".path}}";
@@ -51,14 +53,14 @@
         apiVersion = 1;
 
         datasources = let
-          hosts = ["phobos.cloud.bddvlpr.com:9090"];
+          prometheusHosts = filter (host: host != config.networking.hostName) (lib.mapAttrsToList (host: nixosConfig: "${host}.cloud.bddvlpr.com:9090") (filterAttrs (host: nixosConfig: nixosConfig.config.services.prometheus.enable or false) outputs.nixosConfigurations));
         in
           map (host: {
             name = lib.strings.removeSuffix ":9090" host;
             type = "prometheus";
             url = "http://${host}";
           })
-          hosts;
+          prometheusHosts;
       };
     };
   };
@@ -66,8 +68,7 @@
   services.nginx.virtualHosts."monitoring.bddvlpr.com" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".return = "302 /grafana";
-    locations."/grafana/".proxyPass = let
+    locations."/".proxyPass = let
       inherit (config.services.grafana.settings.server) http_port;
     in "http://127.0.0.1:${toString http_port}/";
   };

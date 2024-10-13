@@ -5,7 +5,11 @@
     ./nextcloud
   ];
 
-  sysc.nginx.enable = true;
+  sysc = {
+    nginx.enable = true;
+    prometheus.enable = true;
+    alertmanager.enable = true;
+  };
 
   networking = {
     hostName = "ceres";

@@ -3,10 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+with lib; let
   cfg = config.sysc.nginx;
 in {
-  options.sysc.nginx = with lib; {
+  options.sysc.nginx = {
     enable = mkOption {
       type = types.bool;
       default = false;
@@ -18,7 +19,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.nginx = {
       enable = true;
 
@@ -30,8 +31,8 @@ in {
       recommendedZstdSettings = true;
 
       commonHttpConfig = let
-        realIpsFromList = lib.strings.concatMapStringsSep "\n" (x: "set_real_ip_from  ${x};");
-        fileToList = x: lib.strings.splitString "\n" (builtins.readFile x);
+        realIpsFromList = strings.concatMapStringsSep "\n" (x: "set_real_ip_from  ${x};");
+        fileToList = x: strings.splitString "\n" (builtins.readFile x);
         cfipv4 = fileToList (pkgs.fetchurl {
           url = "https://www.cloudflare.com/ips-v4";
           sha256 = "0ywy9sg7spafi3gm9q5wb59lbiq0swvf0q3iazl0maq1pj1nsb7h";
@@ -47,7 +48,7 @@ in {
         access_log syslog:server=unix:/dev/log;
       '';
 
-      virtualHosts."localhost" = lib.mkIf cfg.enableExporter {
+      virtualHosts."localhost" = mkIf cfg.enableExporter {
         locations."/nginx_status".extraConfig = ''
           stub_status on;
           access_log off;
@@ -58,7 +59,7 @@ in {
       };
     };
 
-    services.prometheus.exporters.nginx.enable = lib.mkIf cfg.enableExporter true;
+    services.prometheus.exporters.nginx.enable = mkIf cfg.enableExporter true;
 
     security.acme = {
       acceptTerms = true;

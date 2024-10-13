@@ -1,12 +1,14 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    ./alertmanager
     ./grafana
-    ./prometheus
   ];
 
-  sysc.nginx.enable = true;
+  sysc = {
+    nginx.enable = true;
+    prometheus.enable = true;
+    alertmanager.enable = true;
+  };
 
   networking = {
     hostName = "phobos";
