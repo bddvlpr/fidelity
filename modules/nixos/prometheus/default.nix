@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     services.prometheus = {
       enable = true;
-      retentionTime = "14d";
+      retentionTime = "31d";
 
       ruleFiles = [
         ./rules/node-exporter.yml

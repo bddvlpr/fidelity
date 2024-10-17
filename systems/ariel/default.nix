@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./radiosonde-auto-rx
+    # ./radiosonde-auto-rx
   ];
 
   sops.secrets."wireless/env" = {};
