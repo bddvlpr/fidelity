@@ -27,7 +27,7 @@ in {
       scrapeConfigs =
         (
           let
-            ignoredExporters = ["minio" "unifi-poller"];
+            ignoredExporters = ["minio" "unifi-poller" "tor"];
           in
             builtins.filter (v: let static_configs = builtins.head v.static_configs; in static_configs.targets != []) (mapAttrsToList (
               name: value: {

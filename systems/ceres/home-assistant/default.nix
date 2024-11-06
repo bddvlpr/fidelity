@@ -17,6 +17,8 @@
       "isal"
       "homekit"
       "shelly"
+      "sonos"
+      "elevenlabs"
     ];
 
     extraPackages = ps:
@@ -105,8 +107,13 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [21064];
-    allowedUDPPorts = [5353];
+    allowedTCPPorts = [
+      21064 # HomeKit integration
+      1400 # Sonos integration
+    ];
+    allowedUDPPorts = [
+      5353 # HomeKit integration
+    ];
   };
 
   services.nginx.virtualHosts."assistant.bddvlpr.com" = {
