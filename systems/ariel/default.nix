@@ -5,10 +5,6 @@
   config,
   ...
 }: {
-  imports = [
-    # ./radiosonde-auto-rx
-  ];
-
   sops.secrets."wireless/env" = {};
 
   boot = {

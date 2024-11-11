@@ -3,6 +3,7 @@
     inputs.srvos.nixosModules.mixins-terminfo
     ./home-assistant
     ./nextcloud
+    ./radiosonde-auto-rx
   ];
 
   sysc = {

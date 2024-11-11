@@ -4,10 +4,7 @@
     inputs.hardware.nixosModules.raspberry-pi-3
   ];
 
-  hardware = {
-    enableRedistributableFirmware = true;
-    rtl-sdr.enable = true;
-  };
+  hardware.enableRedistributableFirmware = true;
 
   fileSystems = {
     "/" = {

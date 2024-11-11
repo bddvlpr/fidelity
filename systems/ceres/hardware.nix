@@ -9,6 +9,8 @@
     inputs.disko.nixosModules.disko
   ];
 
+  hardware.rtl-sdr.enable = true;
+
   # TODO: Tries growpart on zroot/root
   boot.growPartition = lib.mkForce false;
 
