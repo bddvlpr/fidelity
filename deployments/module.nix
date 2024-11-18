@@ -5,21 +5,27 @@
 }: let
   inherit (self) outputs;
   inherit (builtins) mapAttrs;
-  inherit (inputs) deploy-rs;
-in {
-  flake.deploy.nodes =
-    mapAttrs (host: value: let
-      inherit (value.config.nixpkgs) system;
 
-      activation = deploy-rs.lib.${system}.activate.nixos;
-    in {
-      hostname = "${host}.cloud.bddvlpr.com";
-      profiles = {
-        system = {
-          user = "root";
-          path = activation outputs.nixosConfigurations."${host}";
+  systems = self.nixosConfigurations;
+in {
+  flake = {
+    colmena =
+      (mapAttrs (host: config: {
+          imports = config._module.args.modules;
+          deployment = {
+            targetHost = "${host}.cloud.bddvlpr.com";
+            targetUser = null;
+          };
+        })
+        systems)
+      // {
+        meta = {
+          nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+          nodeNixpkgs = builtins.mapAttrs (_host: config: config.pkgs) systems;
+          nodeSpecialArgs = builtins.mapAttrs (_host: config: config._module.specialArgs) systems;
         };
       };
-    })
-    outputs.nixosConfigurations;
+
+    colmenaHive = inputs.colmena.lib.makeHive outputs.colmena;
+  };
 }

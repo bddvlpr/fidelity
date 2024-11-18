@@ -19,9 +19,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        stable.follows = "nixpkgs-stable";
+      };
     };
 
     sops-nix = {
@@ -70,10 +73,10 @@
         formatter = pkgs.alejandra;
 
         devShells.default = let
-          inherit (inputs'.deploy-rs.packages) deploy-rs;
+          inherit (inputs'.colmena.packages) colmena;
         in
           pkgs.mkShell {
-            buildInputs = with pkgs; [sops deploy-rs];
+            buildInputs = with pkgs; [sops colmena];
           };
       };
     };

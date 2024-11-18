@@ -23,7 +23,7 @@ in {
         type {
           inherit system modules;
           pkgs = mkPkgs system;
-          specialArgs = {inherit inputs outputs host;};
+          specialArgs = {inherit inputs outputs;};
         });
   };
 }
