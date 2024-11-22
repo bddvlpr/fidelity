@@ -10,7 +10,7 @@ in {
     mkPkgs = system:
       import inputs.nixpkgs {
         inherit system;
-        overlay = with outputs.overlays; [pkgs];
+        overlays = with outputs.overlays; [pkgs];
         config.allowUnfree = true;
       };
 

@@ -21,7 +21,7 @@ in {
       // {
         meta = {
           nixpkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-          nodeNixpkgs = builtins.mapAttrs (_host: config: config.pkgs.extend outputs.overlays.pkgs) systems;
+          nodeNixpkgs = builtins.mapAttrs (_host: config: config.pkgs) systems;
           nodeSpecialArgs = builtins.mapAttrs (_host: config: config._module.specialArgs) systems;
         };
       };
