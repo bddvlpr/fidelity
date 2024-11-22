@@ -32,8 +32,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    eufy-security-ws = {
+      url = "github:bropat/eufy-security-ws";
+      flake = false;
+    };
+
     hass-pyloxone = {
       url = "github:jodehli/pyloxone";
+      flake = false;
+    };
+
+    hass-eufy_security = {
+      url = "github:fuatakgun/eufy_security";
       flake = false;
     };
 
@@ -62,6 +72,8 @@
         ./deployments/module.nix
         ./lib/module.nix
         ./modules/module.nix
+        ./overlays/module.nix
+        ./pkgs/module.nix
         ./systems/module.nix
       ];
 
