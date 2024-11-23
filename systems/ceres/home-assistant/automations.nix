@@ -71,7 +71,12 @@
             condition = "template";
             value_template = let
               days = 3;
-            in "{{ (states.input_datetime.${input_id}.attributes.timestamp - as_timestamp(now())) | abs > (60 * 24 * ${toString days}) }}";
+            in "{{ (states.input_datetime.${input_id}.attributes.timestamp - as_timestamp(now())) | abs > (60 * 60 * 24 * ${toString days}) }}";
+          }
+          {
+            condition = "time";
+            after = "09:00:00";
+            before = "22:00:00";
           }
         ];
         action = [
