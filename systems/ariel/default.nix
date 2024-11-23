@@ -32,8 +32,20 @@
   systemd.network = {
     enable = true;
 
-    networks."20-wlan0" = {
-      matchConfig.Name = "wlan0";
+    # networks."20-wlan0" = {
+    #   matchConfig.Name = "wlan0";
+
+    #   address = ["192.168.14.25/24"];
+    #   routes = [
+    #     {
+    #       Gateway = "192.168.14.1";
+    #     }
+    #   ];
+    # linkConfig.RequiredForOnline = "routable";
+    # };
+
+    networks."20-enu1u1" = {
+      matchConfig.Name = "enu1u1";
 
       address = ["192.168.14.25/24"];
       routes = [
@@ -43,17 +55,6 @@
       ];
       linkConfig.RequiredForOnline = "routable";
     };
-
-    # networks."20-enu1u1" = {
-    #   matchConfig.Name = "enu1u1";
-
-    #   address = ["192.168.14.25/24"];
-    #   routes = [
-    #     {
-    #       Gateway = "192.168.14.1";
-    #     }
-    #   ];
-    # };
   };
 
   system.stateVersion = "24.05";
