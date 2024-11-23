@@ -30,6 +30,7 @@
     description = "eufy-security-ws";
     wants = ["network-online.target"];
     after = ["network-online.target"];
+    wantedBy = ["multi-user.target"];
     reloadTriggers = [cfg];
     serviceConfig = {
       ExecStart = "${pkgs.eufy-security-ws}/bin/eufy-security-server --config ${cfg}";

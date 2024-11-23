@@ -53,7 +53,6 @@
           Gateway = "192.168.14.1";
         }
       ];
-      linkConfig.RequiredForOnline = "routable";
     };
   };
 
