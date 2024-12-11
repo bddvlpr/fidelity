@@ -17,7 +17,7 @@ with lib; {
     enable = true;
 
     settings = {
-      server.root_url = "https://monitoring.bddvlpr.com";
+      server.root_url = "https://monitoring.bddvlpr.cloud";
 
       security = {
         admin_email = "$__file{${config.sops.secrets."grafana/email".path}}";
@@ -53,7 +53,7 @@ with lib; {
         apiVersion = 1;
 
         datasources = let
-          prometheusHosts = filter (host: host != config.networking.hostName) (lib.mapAttrsToList (host: nixosConfig: "${host}.cloud.bddvlpr.com:9090") (filterAttrs (host: nixosConfig: nixosConfig.config.services.prometheus.enable or false) outputs.nixosConfigurations));
+          prometheusHosts = filter (host: host != config.networking.hostName) (lib.mapAttrsToList (host: nixosConfig: "${host}.host.bddvlpr.cloud:9090") (filterAttrs (host: nixosConfig: nixosConfig.config.services.prometheus.enable or false) outputs.nixosConfigurations));
         in
           map (host: {
             name = lib.strings.removeSuffix ":9090" host;
@@ -65,7 +65,7 @@ with lib; {
     };
   };
 
-  services.nginx.virtualHosts."monitoring.bddvlpr.com" = {
+  services.nginx.virtualHosts."monitoring.bddvlpr.cloud" = {
     enableACME = true;
     forceSSL = true;
     locations."/".proxyPass = let

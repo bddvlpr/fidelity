@@ -1,7 +1,7 @@
 {
   virtualisation.oci-containers.containers.radiosonde-auto-rx = {
     image = let
-      hash = "067d77cbe66a0ceab23a55859f04d45f3bbe2d14416f4f3cda716f775a9069f4";
+      hash = "3fb4e6c7a2198ca77f612030e6a75c97870014d71dc3013b601102b050261b4f";
     in "ghcr.io/projecthorus/radiosonde_auto_rx@sha256:${hash}";
     ports = ["5000:5000"];
     volumes = [

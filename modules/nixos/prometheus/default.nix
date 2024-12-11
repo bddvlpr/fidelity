@@ -36,7 +36,7 @@ in {
                   hosts = filterAttrs (host: nixosConfig: nixosConfig.config.services.prometheus.exporters.${name}.enable or false) outputs.nixosConfigurations;
                 in [
                   {
-                    targets = lib.mapAttrsToList (host: nixosConfig: "${host}.cloud.bddvlpr.com:${toString value.port}") hosts;
+                    targets = lib.mapAttrsToList (host: nixosConfig: "${host}.host.bddvlpr.cloud:${toString value.port}") hosts;
                   }
                 ];
               }
@@ -48,7 +48,7 @@ in {
             metrics_path = "/_synapse/metrics";
             static_configs = [
               {
-                targets = ["deimos.cloud.bddvlpr.com:8008"];
+                targets = ["deimos.host.bddvlpr.cloud:8008"];
               }
             ];
           }
@@ -62,7 +62,7 @@ in {
             {
               targets = mapAttrsToList (host: nixosConfig: let
                 inherit (nixosConfig.config.services.prometheus.alertmanager) port;
-              in "${host}.cloud.bddvlpr.com:${toString port}")
+              in "${host}.host.bddvlpr.cloud:${toString port}")
               alertmanagerConfigs;
             }
           ];

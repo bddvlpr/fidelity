@@ -51,6 +51,7 @@
       default_phone_region = "BE";
       default_timezone = "Europe/Brussels";
       maintenance_window_start = 2;
+      "simpleSignUpLink.shown" = false;
     };
 
     extraApps = {

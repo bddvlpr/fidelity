@@ -27,6 +27,10 @@
       with ps; [
         gtts
         websockets
+
+        # Homekit
+        aiohomekit
+        python-otbr-api
       ];
 
     customComponents = [

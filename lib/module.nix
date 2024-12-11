@@ -26,5 +26,7 @@ in {
           pkgs = mkPkgs system;
           specialArgs = {inherit inputs outputs;};
         });
+
+    home-assistant = import ./home-assistant.nix;
   };
 }

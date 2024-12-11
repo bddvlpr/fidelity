@@ -13,7 +13,7 @@ in {
       (mapAttrs (host: config: {
           imports = config._module.args.modules;
           deployment = {
-            targetHost = "${host}.cloud.bddvlpr.com";
+            targetHost = "${host}.host.bddvlpr.cloud";
             targetUser = null;
           };
         })

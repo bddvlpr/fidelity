@@ -36,7 +36,7 @@ in {
               )
               outputs.nixosConfigurations));
         in
-          concatMap (peer: ["--cluster.peer=${peer}.cloud.bddvlpr.com:9094"]) otherPeers);
+          concatMap (peer: ["--cluster.peer=${peer}.host.bddvlpr.cloud:9094"]) otherPeers);
 
       configuration = {
         global = {

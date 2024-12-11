@@ -1,0 +1,34 @@
+$TTL 1H
+
+@		IN	SOA	ns1.bddvlpr.cloud.	admin.bddvlpr.com.	(
+	2024120621
+	1D
+	2H
+	4W
+	1H
+)
+
+		IN		NS		ns1
+
+ns1		IN		A		100.96.41.51
+ns1		IN		AAAA	fd7a:115c:a1e0::6901:2933
+ns2		IN		A		100.119.204.66
+ns2		IN		AAAA	fd7a:115c:a1e0::fa01:cc42
+
+; Services
+
+monitoring		IN		A		135.181.32.158
+monitoring		IN		AAAA	2a01:4f9:c010:8793::1
+
+; Hosts
+
+ariel.in		IN		A		100.86.15.110
+ariel.in		IN		AAAA	fd7a:115c:a1e0::a301:f6e
+ceres.in		IN		A		100.119.204.66
+ceres.in		IN		AAAA	fd7a:115c:a1e0::fa01:cc42
+deimos.in		IN		A		100.96.41.51
+deimos.in		IN		AAAA	fd7a:115c:a1e0::6901:2933
+pallas.in		IN		A		100.93.237.118
+pallas.in		IN		AAAA	fd7a:115c:a1e0::5d01:ed76
+phobos.in		IN		A		100.67.54.79
+phobos.in		IN		AAAA	fd7a:115c:a1e0::4201:364f

@@ -3,7 +3,7 @@
     inputs.srvos.nixosModules.mixins-terminfo
     # ./minecraft
     ./synapse
-    ./untis-ics-sync
+    # ./untis-ics-sync
   ];
 
   sysc.nginx.enable = true;

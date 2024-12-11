@@ -112,8 +112,85 @@
       }
     ];
   };
+
+  mkGeolocationWarning = {
+    actor_name,
+    actor_id,
+    check_id ? "person.bddvlpr",
+    zone ? "zone.home",
+    tts_id ? "tts.elevenlabs",
+    media_id ? "media_player.slaapkamer_stijn",
+  }: {
+    automation = [
+      {
+        alias = "Geolocation/When ${actor_id} enters ${zone} then warn ${media_id}";
+
+        trigger = [
+          {
+            platform = "zone";
+            entity_id = actor_id;
+            inherit zone;
+            event = "enter";
+          }
+        ];
+
+        condition = [
+          {
+            condition = "state";
+            entity_id = check_id;
+            state = "home";
+          }
+        ];
+
+        action = [
+          {
+            action = "tts.speak";
+            data = {
+              media_player_entity_id = media_id;
+              message = "${actor_name} is arriving home.";
+            };
+            target.entity_id = tts_id;
+          }
+        ];
+      }
+    ];
+  };
 in
   lib.mkMerge [
+    {
+      media_player = [
+        {
+          platform = "group";
+          name = "Speakers";
+          entities = [
+            "media_player.badkamer"
+            "media_player.eetkamer"
+            "media_player.slaapkamer_anke"
+            "media_player.slaapkamer_stijn"
+          ];
+        }
+      ];
+      script.announce = {
+        alias = "Announce";
+
+        fields.message = {
+          name = "Message";
+          required = true;
+        };
+
+        sequence = [
+          {
+            action = "tts.speak";
+            data = {
+              cache = true;
+              message = "{{ message }}";
+              media_player_entity_id = "media_player.speakers";
+            };
+            target.entity_id = "tts.elevenlabs";
+          }
+        ];
+      };
+    }
     (mkGeolocationTrigger {
       actor_id = "person.bddvlpr";
       target_id = "switch.stijnifttt";
@@ -133,5 +210,17 @@ in
     (mkVacuumTrigger {
       actor_id = "person.bddvlpr";
       roomba_id = "vacuum.roomba_691";
+    })
+    (mkGeolocationWarning {
+      actor_name = "Sven";
+      actor_id = "person.sven";
+    })
+    (mkGeolocationWarning {
+      actor_name = "Anke";
+      actor_id = "person.anke";
+    })
+    (mkGeolocationWarning {
+      actor_name = "Cin";
+      actor_id = "person.cin";
     })
   ]
