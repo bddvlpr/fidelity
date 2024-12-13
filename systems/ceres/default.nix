@@ -1,6 +1,7 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
+    ./apcupsd
     ./eufy-security-ws
     ./home-assistant
     ./nextcloud
