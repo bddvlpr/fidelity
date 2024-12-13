@@ -1,0 +1,49 @@
+
+groups:
+  - name: APCUPSDExporter
+    rules:
+    - alert: APCUPSDBatteryNearlyEmpty
+      expr: 'apcupsd_battery_charge_percent < 25'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: APCUPSD battery nearly empty (instance {{ $labels.instance }})
+        description: "Battery is almost empty (< 25% left).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - alert: APCUPSDTimeRunningOut
+      expr: 'apcupsd_battery_left_seconds < 900'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: APCUPSD less than 15 minutes of battery time remaining (instance {{ $labels.instance }})
+        description: "Battery is almost empty (< 15 minutes remaining).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+       
+    - alert: APCUPSDInputOutage
+      expr: 'apcupsd_battery_time_on_seconds > 0'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: APCUPSD has an input outage (instance {{ $labels.instance }})
+        description: "UPS is now running on battery (since {{ $value | humanizeDuration }}).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - alert: APCUPSDLowBatteryVoltage
+      expr: '(apcupsd_battery_volts / apcupsd_battery_nominal_volts) < 0.95'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: APCUPSD battery is on low voltage (instance {{ $labels.instance }})
+        description: "UPS battery has a lower voltage than normal (< 95%).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+    - alert: APCUPSDHighLoad
+      expr: 'apcupsd_ups_load_percent > 80'
+      for: 0m
+      labels:
+        severity: critical
+      annotations:
+        summary: APCUPSD has high load (instance {{ $labels.instance }})
+        description: "UPS is undergoing high load (> 80%).\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+       
