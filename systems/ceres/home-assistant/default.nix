@@ -10,10 +10,12 @@
 
     extraComponents = [
       "apple_tv"
+      "cast"
       "dsmr"
       "elevenlabs"
       "esphome"
       "foscam"
+      "harmony"
       "homekit"
       "isal"
       "met"

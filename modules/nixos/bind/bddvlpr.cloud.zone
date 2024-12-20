@@ -12,8 +12,6 @@ $TTL 1H
 
 ns1		IN		A		100.96.41.51
 ns1		IN		AAAA	fd7a:115c:a1e0::6901:2933
-ns2		IN		A		100.119.204.66
-ns2		IN		AAAA	fd7a:115c:a1e0::fa01:cc42
 
 ; Services
 

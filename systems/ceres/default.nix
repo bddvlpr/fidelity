@@ -6,6 +6,7 @@
     ./home-assistant
     ./nextcloud
     ./radiosonde-auto-rx
+    ./monero
   ];
 
   sysc = {

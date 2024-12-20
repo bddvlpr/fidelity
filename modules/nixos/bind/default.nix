@@ -11,15 +11,16 @@ in {
       type = types.bool;
       default = false;
     };
-
-    slaves = mkOption {
-      type = with types; listOf str;
-    };
   };
 
   config = mkIf cfg.enable {
     services.bind = {
       enable = true;
+
+      forwarders = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
 
       cacheNetworks = [
         "10.0.0.0/8"
@@ -31,11 +32,20 @@ in {
         "::1/128"
       ];
 
-      listenOn = ["100.96.41.51"];
+      listenOn = [
+        "127.0.0.1"
+        "100.96.41.51"
+      ];
 
-      zones."bddvlpr.cloud" = {
-        file = ./bddvlpr.cloud.zone;
+      zones."in.bddvlpr.cloud" = {
+        master = true;
+        file = ./in.bddvlpr.cloud.zone;
       };
+    };
+
+    networking.firewall = {
+      allowedTCPPorts = [53];
+      allowedUDPPorts = [53];
     };
   };
 }
