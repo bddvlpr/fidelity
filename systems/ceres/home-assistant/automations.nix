@@ -113,43 +113,51 @@
     ];
   };
 
-  mkGeolocationWarning = {
-    actor_name,
-    actor_id,
-    check_id ? "person.bddvlpr",
-    zone ? "zone.home",
-    tts_id ? "tts.elevenlabs",
-    media_id ? "media_player.slaapkamer_stijn",
+  mkTimer = {
+    at,
+    name ? "unknown",
+    conditions ? [],
+    actions,
   }: {
     automation = [
       {
-        alias = "Geolocation/When ${actor_id} enters ${zone} then warn ${media_id}";
+        alias = "Timer/At ${at}, trigger ${name}";
 
-        trigger = [
+        triggers = [
           {
-            platform = "zone";
-            entity_id = actor_id;
-            inherit zone;
-            event = "enter";
+            trigger = "time";
+            inherit at;
           }
         ];
 
-        condition = [
+        inherit conditions actions;
+      }
+    ];
+  };
+
+  mkBlindTimer = {
+    event,
+    entity_id,
+    action,
+    offset ? "00:00:00",
+  }: {
+    automation = [
+      {
+        alias = "Timer/On ${event}, trigger ${lib.concatStringsSep ", " entity_id}";
+
+        triggers = [
           {
-            condition = "state";
-            entity_id = check_id;
-            state = "home";
+            trigger = "sun";
+            inherit event offset;
           }
         ];
 
-        action = [
+        actions = [
           {
-            action = "tts.speak";
-            data = {
-              media_player_entity_id = media_id;
-              message = "${actor_name} is arriving home.";
+            inherit action;
+            target = {
+              inherit entity_id;
             };
-            target.entity_id = tts_id;
           }
         ];
       }
@@ -158,6 +166,17 @@
 in
   lib.mkMerge [
     {
+      cover = [
+        {
+          platform = "group";
+          name = "Rolgordijn beneden";
+          entities = [
+            "cover.rollerblind_0001"
+            "cover.rollerblind_0002"
+          ];
+        }
+      ];
+
       media_player = [
         {
           platform = "group";
@@ -170,6 +189,7 @@ in
           ];
         }
       ];
+
       script.announce = {
         alias = "Announce";
 
@@ -189,6 +209,11 @@ in
             target.entity_id = "tts.elevenlabs";
           }
         ];
+      };
+    }
+    {
+      input_text."intercom_value" = {
+        name = "Intercom bericht";
       };
     }
     (mkGeolocationTrigger {
@@ -211,16 +236,30 @@ in
       actor_id = "person.bddvlpr";
       roomba_id = "vacuum.roomba_691";
     })
-    (mkGeolocationWarning {
-      actor_name = "Sven";
-      actor_id = "person.sven";
+    (mkTimer {
+      at = "01:00:00";
+      name = "Salon RGBW";
+      actions = [
+        {
+          action = "light.turn_off";
+          target.entity_id = "light.led_strip_rgbw_light_0";
+        }
+      ];
     })
-    (mkGeolocationWarning {
-      actor_name = "Anke";
-      actor_id = "person.anke";
+    (mkBlindTimer {
+      event = "sunrise";
+      action = "cover.open_cover";
+      entity_id = [
+        "cover.rollerblind_0001"
+        "cover.rollerblind_0002"
+      ];
     })
-    (mkGeolocationWarning {
-      actor_name = "Cin";
-      actor_id = "person.cin";
+    (mkBlindTimer {
+      event = "sunset";
+      action = "cover.close_cover";
+      entity_id = [
+        "cover.rollerblind_0001"
+        "cover.rollerblind_0002"
+      ];
     })
   ]

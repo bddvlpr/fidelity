@@ -15,10 +15,10 @@
       "elevenlabs"
       "esphome"
       "foscam"
-      "harmony"
       "homekit"
       "isal"
       "met"
+      "motion_blinds"
       "roomba"
       "shelly"
       "sonos"
@@ -42,6 +42,10 @@
       (pkgs.callPackage ./components/eufy_security.nix {
         input = inputs.hass-eufy_security;
       })
+    ];
+
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      vacuum-card
     ];
 
     config = lib.mkMerge [
