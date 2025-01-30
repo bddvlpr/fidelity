@@ -1,11 +1,7 @@
 {
   services.avahi = {
     enable = true;
-    publish = {
-      enable = true;
-      domain = true;
-      addresses = true;
-      userServices = true;
-    };
+    nssmdns4 = true;
+    reflector = true;
   };
 }

@@ -1,11 +1,11 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    ./apcupsd
+    # ./apcupsd
     ./eufy-security-ws
     ./home-assistant
     ./nextcloud
-    ./radiosonde-auto-rx
+    # ./radiosonde-auto-rx
   ];
 
   sysc = {
@@ -17,8 +17,6 @@
   networking = {
     hostName = "ceres";
     hostId = "3d845e20";
-
-    nameservers = ["1.1.1.1" "1.0.0.1"];
   };
 
   systemd.network = {

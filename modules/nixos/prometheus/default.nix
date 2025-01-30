@@ -20,7 +20,7 @@ in {
       retentionTime = "31d";
 
       ruleFiles = [
-        ./rules/apcupsd-exporter.yml
+        # ./rules/apcupsd-exporter.yml
         ./rules/node-exporter.yml
         ./rules/prometheus-exporter.yml
       ];

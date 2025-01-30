@@ -46,11 +46,11 @@ with lib; {
             type = "file";
             options.path = ./dashboards/synapse-exporter.json;
           }
-          {
-            name = "APCUPSD Exporter";
-            type = "file";
-            options.path = ./dashboards/apcupsd-exporter.json;
-          }
+          # {
+          #   name = "APCUPSD Exporter";
+          #   type = "file";
+          #   options.path = ./dashboards/apcupsd-exporter.json;
+          # }
         ];
       };
 

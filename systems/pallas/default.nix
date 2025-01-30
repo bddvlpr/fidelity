@@ -22,8 +22,6 @@
   networking = {
     hostName = "pallas";
     hostId = "3d845e23";
-
-    nameservers = ["1.1.1.1" "1.0.0.1"];
   };
 
   systemd.network = {

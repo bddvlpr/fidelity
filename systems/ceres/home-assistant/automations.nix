@@ -205,6 +205,7 @@ in
               cache = true;
               message = "{{ message }}";
               media_player_entity_id = "media_player.speakers";
+              options.voice = "ANHrhmaFeVN0QJaa0PhL";
             };
             target.entity_id = "tts.elevenlabs";
           }
