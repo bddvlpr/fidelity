@@ -3,7 +3,7 @@
     inputs.srvos.nixosModules.mixins-terminfo
     # ./apcupsd
     ./eufy-security-ws
-    ./home-assistant
+    # ./home-assistant
     ./nextcloud
     # ./radiosonde-auto-rx
   ];
