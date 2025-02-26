@@ -8,7 +8,7 @@
 
   sops.secrets."mullvad/conf".owner = config.services.transmission.user;
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver
