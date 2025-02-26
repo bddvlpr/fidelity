@@ -1,8 +1,9 @@
 {inputs, ...}: {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
+    ./arr
     # ./apcupsd
-    ./eufy-security-ws
+    # ./eufy-security-ws
     # ./home-assistant
     ./nextcloud
     # ./radiosonde-auto-rx
