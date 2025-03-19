@@ -4,7 +4,8 @@
   pkgs,
   lib,
   ...
-} @ args: {
+}@args:
+{
   services.home-assistant = {
     enable = true;
 
@@ -25,8 +26,8 @@
       "tuya"
     ];
 
-    extraPackages = ps:
-      with ps; [
+    extraPackages =
+      ps: with ps; [
         gtts
         websockets
 
@@ -50,7 +51,7 @@
 
     config = lib.mkMerge [
       {
-        default_config = {};
+        default_config = { };
 
         http = {
           use_x_forwarded_for = true;
@@ -84,9 +85,11 @@
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      proxyPass = let
-        inherit (config.services.home-assistant.config.http) server_port;
-      in "http://127.0.0.1:${toString server_port}/";
+      proxyPass =
+        let
+          inherit (config.services.home-assistant.config.http) server_port;
+        in
+        "http://127.0.0.1:${toString server_port}/";
       proxyWebsockets = true;
     };
   };

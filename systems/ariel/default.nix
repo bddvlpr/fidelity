@@ -4,12 +4,15 @@
   pkgs,
   config,
   ...
-}: {
-  sops.secrets."wireless/env" = {};
+}:
+{
+  sops.secrets."wireless/env" = { };
 
   boot = {
     tmp.useTmpfs = true;
-    kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi3;
+    kernelPackages =
+      lib.mkForce
+        inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi3;
     initrd.systemd.enable = false;
     loader.systemd-boot.enable = lib.mkForce false;
   };
@@ -45,7 +48,7 @@
     networks."20-enu1u1" = {
       matchConfig.Name = "enu1u1";
 
-      address = ["192.168.14.25/24"];
+      address = [ "192.168.14.25/24" ];
       routes = [
         {
           Gateway = "192.168.14.1";

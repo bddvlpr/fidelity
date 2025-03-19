@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.srvos.nixosModules.server
@@ -15,23 +16,25 @@
   # TODO: Tries growpart on zroot/root
   boot.growPartition = lib.mkForce false;
 
-  sops.secrets."samba/credentials" = {};
+  sops.secrets."samba/credentials" = { };
 
   fileSystems."/mnt/media" = {
     fsType = "cifs";
     device = "//192.168.14.21/NoBackup/Stijn/Media";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
-      credentials_opts = "credentials=${config.sops.secrets."samba/credentials".path}";
-    in [
-      automount_opts
-      credentials_opts
-      "uid=sonarr"
-      "gid=media"
-      "dir_mode=0775"
-      "file_mode=0775"
-      "vers=2.0"
-    ];
+    options =
+      let
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+        credentials_opts = "credentials=${config.sops.secrets."samba/credentials".path}";
+      in
+      [
+        automount_opts
+        credentials_opts
+        "uid=sonarr"
+        "gid=media"
+        "dir_mode=0775"
+        "file_mode=0775"
+        "vers=2.0"
+      ];
   };
 
   disko.devices = {
@@ -50,7 +53,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["defaults"];
+                mountOptions = [ "defaults" ];
               };
             };
             zfs = {

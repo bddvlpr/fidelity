@@ -1,14 +1,19 @@
-{config, ...}: {
+{ config, ... }:
+{
   sops.secrets = {
-    "vrchat-jellyfin/env" = {};
-    "vrchat-jellyfin/htaccess" = {owner = "nginx";};
+    "vrchat-jellyfin/env" = { };
+    "vrchat-jellyfin/htaccess" = {
+      owner = "nginx";
+    };
   };
 
   virtualisation.oci-containers.containers.vrchat-jellyfin = {
-    image = let
-      hash = "88104512748a403ed1b6ef398af7a31a292f039234ed53e1d1cb180f44e4f204";
-    in "ghcr.io/gurrrrrrett3/vrchat-jellyfin@sha256:${hash}";
-    ports = ["4000:4000"];
+    image =
+      let
+        hash = "88104512748a403ed1b6ef398af7a31a292f039234ed53e1d1cb180f44e4f204";
+      in
+      "ghcr.io/gurrrrrrett3/vrchat-jellyfin@sha256:${hash}";
+    ports = [ "4000:4000" ];
     environment = {
       MAX_WIDTH = "1280";
       MAX_HEIGHT = "720";

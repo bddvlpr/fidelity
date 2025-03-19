@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.sysc.k3s;
-in {
+in
+{
   options.sysc.k3s = {
     enable = mkOption {
       type = types.bool;
@@ -13,7 +15,10 @@ in {
     };
 
     role = mkOption {
-      type = types.enum ["server" "agent"];
+      type = types.enum [
+        "server"
+        "agent"
+      ];
       default = "server";
     };
   };

@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.sysc.bind;
-in {
+in
+{
   options.sysc.bind = {
     enable = mkOption {
       type = types.bool;
@@ -44,8 +46,8 @@ in {
     };
 
     networking.firewall = {
-      allowedTCPPorts = [53];
-      allowedUDPPorts = [53];
+      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 ];
     };
   };
 }

@@ -3,29 +3,36 @@
   inputs,
   withSystem,
   ...
-}: let
+}:
+let
   inherit (self) outputs;
-in {
+in
+{
   flake.lib = rec {
-    mkPkgs = system:
+    mkPkgs =
+      system:
       import inputs.nixpkgs {
         inherit system;
-        overlays = with outputs.overlays; [pkgs];
+        overlays = with outputs.overlays; [ pkgs ];
         config.allowUnfree = true;
       };
 
-    mkStrappedSystem = host: system: type: modules:
-      mkSystem host system type (modules
-        ++ builtins.attrValues outputs.nixosModules
-        ++ builtins.attrValues outputs.sharedModules);
+    mkStrappedSystem =
+      host: system: type: modules:
+      mkSystem host system type (
+        modules ++ builtins.attrValues outputs.nixosModules ++ builtins.attrValues outputs.sharedModules
+      );
 
-    mkSystem = host: system: type: modules:
-      withSystem system ({pkgs, ...}:
+    mkSystem =
+      host: system: type: modules:
+      withSystem system (
+        { pkgs, ... }:
         type {
           inherit system modules;
           pkgs = mkPkgs system;
-          specialArgs = {inherit inputs outputs;};
-        });
+          specialArgs = { inherit inputs outputs; };
+        }
+      );
 
     home-assistant = import ./home-assistant.nix;
   };

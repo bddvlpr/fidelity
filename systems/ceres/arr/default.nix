@@ -3,8 +3,9 @@
   config,
   inputs,
   ...
-}: {
-  imports = [inputs.nixarr.nixosModules.default];
+}:
+{
+  imports = [ inputs.nixarr.nixosModules.default ];
 
   sops.secrets."mullvad/conf".owner = config.services.transmission.user;
 

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.matrix-synapse = {
     enable = true;
 
@@ -10,7 +11,7 @@
       enable_metrics = true;
       listeners = [
         {
-          bind_addresses = ["::"];
+          bind_addresses = [ "::" ];
           port = 8008;
           type = "http";
           tls = false;

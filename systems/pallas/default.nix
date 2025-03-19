@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./klipper
     ./mainsail
@@ -14,7 +15,9 @@
 
   boot = {
     tmp.useTmpfs = true;
-    kernelPackages = lib.mkForce inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi4;
+    kernelPackages =
+      lib.mkForce
+        inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.linuxKernel.packages.linux_rpi4;
     initrd.systemd.enable = false;
     loader.systemd-boot.enable = lib.mkForce false;
   };
@@ -30,7 +33,7 @@
     networks."20-end0" = {
       matchConfig.Name = "end0";
 
-      address = ["192.168.14.26/24"];
+      address = [ "192.168.14.26/24" ];
       routes = [
         {
           Gateway = "192.168.14.1";

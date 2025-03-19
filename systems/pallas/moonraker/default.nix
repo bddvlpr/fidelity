@@ -23,8 +23,8 @@
           "::1/128"
         ];
       };
-      octoprint_compat = {};
-      history = {};
+      octoprint_compat = { };
+      history = { };
 
       "webcam printer" = {
         target_fps = 5;

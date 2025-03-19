@@ -1,5 +1,6 @@
-{config, ...}: {
-  sops.secrets."tailscale/key" = {};
+{ config, ... }:
+{
+  sops.secrets."tailscale/key" = { };
 
   services.tailscale = {
     enable = true;

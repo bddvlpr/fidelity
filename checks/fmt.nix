@@ -7,9 +7,9 @@
 mkTest {
   name = "fmt";
 
-  src = lib.sourceFilesBySuffices self [".nix"];
+  src = lib.sourceFilesBySuffices self [ ".nix" ];
 
-  checkInputs = [alejandra];
+  checkInputs = [ alejandra ];
   checkPhase = ''
     mkdir -p $out
     alejandra --check . | tee $out/fmt.log

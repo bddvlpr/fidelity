@@ -2,32 +2,35 @@
   inputs,
   config,
   ...
-}: {
+}:
+{
   imports = [
     inputs.untis-ics-sync.nixosModules.default
   ];
 
   sops = {
     secrets = {
-      "uis/schoolname" = {};
-      "uis/username" = {};
-      "uis/password" = {};
-      "uis/baseurl" = {};
+      "uis/schoolname" = { };
+      "uis/username" = { };
+      "uis/password" = { };
+      "uis/baseurl" = { };
     };
 
-    templates."untis-ics-sync.env".content = let
-      inherit (config.sops) placeholder;
-    in ''
-      UNTIS_SCHOOLNAME=${placeholder."uis/schoolname"}
-      UNTIS_USERNAME=${placeholder."uis/username"}
-      UNTIS_PASSWORD=${placeholder."uis/password"}
-      UNTIS_BASEURL=${placeholder."uis/baseurl"}
+    templates."untis-ics-sync.env".content =
+      let
+        inherit (config.sops) placeholder;
+      in
+      ''
+        UNTIS_SCHOOLNAME=${placeholder."uis/schoolname"}
+        UNTIS_USERNAME=${placeholder."uis/username"}
+        UNTIS_PASSWORD=${placeholder."uis/password"}
+        UNTIS_BASEURL=${placeholder."uis/baseurl"}
 
-      CORS_ORIGIN="https://uis-ap.bddvlpr.com"
+        CORS_ORIGIN="https://uis-ap.bddvlpr.com"
 
-      LESSONS_TIMETABLE_BEFORE=3
-      LESSONS_TIMETABLE_AFTER=14
-    '';
+        LESSONS_TIMETABLE_BEFORE=3
+        LESSONS_TIMETABLE_AFTER=14
+      '';
   };
 
   services.untis-ics-sync = {
