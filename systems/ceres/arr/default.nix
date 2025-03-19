@@ -24,6 +24,8 @@
   nixarr = {
     enable = true;
 
+    mediaDir = "/mnt/media";
+
     vpn = {
       enable = true;
       wgConf = config.sops.secrets."mullvad/conf".path;
@@ -44,9 +46,7 @@
     };
 
     prowlarr.enable = true;
-
     bazarr.enable = true;
-    lidarr.enable = true;
     sonarr.enable = true;
     radarr.enable = true;
   };

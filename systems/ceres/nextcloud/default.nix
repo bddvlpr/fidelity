@@ -31,7 +31,7 @@
   services.nextcloud = {
     enable = true;
     hostName = "cloud.bddvlpr.com";
-    package = pkgs.nextcloud30;
+    package = pkgs.nextcloud31;
 
     https = true;
     database.createLocally = true;

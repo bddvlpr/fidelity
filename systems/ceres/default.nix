@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
     ./arr
@@ -6,6 +7,8 @@
     # ./eufy-security-ws
     # ./home-assistant
     ./nextcloud
+    # ./spoolman
+    ./vrchat-jellyfin
     # ./radiosonde-auto-rx
   ];
 
@@ -26,7 +29,7 @@
     networks."20-eno1" = {
       matchConfig.Name = "eno1";
 
-      address = ["192.168.14.23/24"];
+      address = [ "192.168.14.23/24" ];
       routes = [
         {
           Gateway = "192.168.14.1";
@@ -36,7 +39,12 @@
     };
   };
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "sd_mod"];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "sd_mod"
+  ];
 
   system.stateVersion = "24.05";
 }
