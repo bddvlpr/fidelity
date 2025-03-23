@@ -35,17 +35,17 @@ in
       host = "ceres";
       system = "x86_64-linux";
     })
-    (mkNode {
-      host = "deimos";
-      system = "aarch64-linux";
-    })
+    # (mkNode {
+    #   host = "deimos";
+    #   system = "aarch64-linux";
+    # })
     # (mkNode {
     #   host = "pallas";
     #   system = "aarch64-linux";
     # })
-    (mkNode {
-      host = "phobos";
-      system = "aarch64-linux";
-    })
+    # (mkNode {
+    #   host = "phobos";
+    #   system = "aarch64-linux";
+    # })
   ];
 }

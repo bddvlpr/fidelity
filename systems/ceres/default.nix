@@ -3,13 +3,9 @@
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
     ./arr
-    # ./apcupsd
-    # ./eufy-security-ws
-    # ./home-assistant
+    ./grafana
     ./nextcloud
-    # ./spoolman
     ./vrchat-jellyfin
-    # ./radiosonde-auto-rx
   ];
 
   sysc = {

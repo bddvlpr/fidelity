@@ -2,13 +2,11 @@
 {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
-    ./grafana
+    # ./grafana
   ];
 
   sysc = {
     nginx.enable = true;
-    prometheus.enable = true;
-    alertmanager.enable = true;
   };
 
   networking = {
