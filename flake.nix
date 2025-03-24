@@ -21,6 +21,16 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
+    colmena = {
+      type = "github";
+      owner = "zhaofengli";
+      repo = "colmena";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        stable.follows = "nixpkgs-stable";
+      };
+    };
+
     easy-hosts = {
       type = "github";
       owner = "tgirlcloud";
@@ -69,6 +79,8 @@
       ];
 
       easyHosts = {
+        path = ./systems;
+
         perClass = class: {
           modules = [
             "${self}/modules/common/default.nix"
@@ -82,7 +94,6 @@
             class = "nixos";
             # nixpkgs = inputs.nixpkgs-stable;
             deployable = true;
-            modules = [ ./systems/strawberry.nix ];
           };
         };
       };

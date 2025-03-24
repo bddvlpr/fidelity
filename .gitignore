@@ -1,4 +1,9 @@
 /.direnv
 /.gcroots
 /result
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
 *.qcow2
