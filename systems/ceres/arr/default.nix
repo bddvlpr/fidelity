@@ -3,9 +3,8 @@
   config,
   inputs,
   ...
-}:
-{
-  imports = [ inputs.nixarr.nixosModules.default ];
+}: {
+  imports = [inputs.nixarr.nixosModules.default];
 
   sops.secrets."mullvad/conf".owner = config.services.transmission.user;
 
@@ -42,6 +41,10 @@
       extraSettings = {
         rpc-enabled = true;
         rpc-host-whitelist = "ceres";
+
+        dht-enabled = false;
+        lpd-enabled = false;
+        pex-enabled = false;
       };
       vpn.enable = true;
     };

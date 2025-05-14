@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.srvos.nixosModules.mixins-terminfo
+    ./actual
     ./arr
     ./grafana
     ./nextcloud
