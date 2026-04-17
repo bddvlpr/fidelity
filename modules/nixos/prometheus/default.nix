@@ -31,8 +31,9 @@ in
         let
           ignoredExporters = [
             "minio"
-            "unifi-poller"
+            "rspamd"
             "tor"
+            "unifi-poller"
           ];
         in
         builtins.filter

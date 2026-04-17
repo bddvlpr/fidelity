@@ -14,6 +14,7 @@ with lib;
       "grafana/email" = { inherit owner; };
       "grafana/user" = { inherit owner; };
       "grafana/password" = { inherit owner; };
+      "grafana/secret" = { inherit owner; };
     };
 
   services.grafana = {
@@ -26,6 +27,7 @@ with lib;
         admin_email = "$__file{${config.sops.secrets."grafana/email".path}}";
         admin_user = "$__file{${config.sops.secrets."grafana/user".path}}";
         admin_password = "$__file{${config.sops.secrets."grafana/password".path}}";
+        secret_key = "$__file{${config.sops.secrets."grafana/secret".path}}";
       };
     };
 

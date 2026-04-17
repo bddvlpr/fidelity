@@ -6,7 +6,6 @@
     ./arr
     ./grafana
     ./nextcloud
-    ./vrchat-jellyfin
   ];
 
   sysc = {

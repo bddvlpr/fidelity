@@ -3,8 +3,9 @@
   config,
   inputs,
   ...
-}: {
-  imports = [inputs.nixarr.nixosModules.default];
+}:
+{
+  imports = [ inputs.nixarr.nixosModules.default ];
 
   sops.secrets."mullvad/conf".owner = config.services.transmission.user;
 
@@ -13,11 +14,10 @@
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
-      vaapiVdpau
+      libva-vdpau-driver
       libvdpau-va-gl
       intel-compute-runtime
       vpl-gpu-rt
-      intel-media-sdk
     ];
   };
 
@@ -53,5 +53,14 @@
     bazarr.enable = true;
     sonarr.enable = true;
     radarr.enable = true;
+  };
+
+  services.nginx.virtualHosts."media.bddvlpr.cloud" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:8096/";
+      proxyWebsockets = true;
+    };
   };
 }
